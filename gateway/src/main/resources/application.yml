@@ -1,0 +1,25 @@
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+gateway:
+  services:
+    mockoon:
+      url: http://localhost:3000
+      routes:
+        - path: /get/{id}
+          redirect: /test/{id}
+          method: GET
+          cached: true
+        - path: /get/{id}
+          redirect: /test/{id}
+          method: POST
+          cached: true
+        - path: /get/{id}
+          redirect: /get/{id}
+          method: GET
+          cached: false
